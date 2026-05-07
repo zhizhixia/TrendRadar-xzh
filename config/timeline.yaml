@@ -188,13 +188,14 @@ presets:
         # filter_method: "keyword"                # 筛选策略（可选: keyword | ai，不填用全局 filter.method）
         analyze: true              # 晚间做 AI 分析
         ai_mode: "daily"           # AI 也汇总全天内容
-        report_mode: "daily"       # 切换为当日全部新闻汇总
+        report_mode: "current"       # 切换为当日全部新闻汇总
         once:
           analyze: false            # 窗口内只分析一次
           push: true               # 窗口内只推送一次
 
     # 日计划 ── 把时间段组装成一天的安排
         collect: true
+        filter_method: ai
       morning_push:
         name: "晨间推送"
         start: "08:00"
@@ -202,10 +203,11 @@ presets:
         collect: true
         analyze: true
         push: true
-        report_mode: daily
+        report_mode: current
         once:
           analyze: true
           push: true
+        filter_method: ai
     day_plans:
       all_day:
         periods: ["evening_summary", "morning_push"]
