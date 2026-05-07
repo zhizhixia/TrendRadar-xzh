@@ -102,7 +102,7 @@ rss:
   freshness_filter:
     enabled: true                     # 是否启用新鲜度过滤（默认启用）
 
-    max_age_days: 1                   # 最大文章年龄（天）
+    max_age_days: 3                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
                                       # - 0：禁用过滤，推送所有文章
 
@@ -279,9 +279,9 @@ display:
   regions:
     ai_analysis: true # AI 分析区域
     new_items: true # 新增热点区域（含热榜新增 + RSS 新增）
-    hotlist: true # 热榜区域（关键词匹配 / AI 智能筛选）
-    rss: true # RSS 订阅区域
-    standalone: true # 独立展示区（完整热榜/RSS，不受关键词过滤）
+    hotlist: false # 热榜区域（关键词匹配 / AI 智能筛选）
+    rss: false # RSS 订阅区域
+    standalone: false # 独立展示区（完整热榜/RSS，不受关键词过滤）
   standalone:
     platforms: ["zhihu","wallstreetcn-hot","thepaper","ifeng"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
     rss_feeds: ["gold","quanqiu"] # RSS 源 ID 列表（如 ["hacker-news"]）
@@ -443,7 +443,7 @@ ai:
   temperature: 1.0                  # 采样温度 (0.0-2.0)
                                     # 注意：部分模型(如 gpt-5)可能要求必须为 1.0，否则会报错
   
-  max_tokens: 8000                  # 最大生成 token 数
+  max_tokens: 6999                  # 最大生成 token 数
                                     # 注意：如果 API 不支持此参数(报 HTTP 400)，请设为 0 以禁用发送
   # 高级选项
   num_retries: 2                    # 失败重试次数
@@ -497,7 +497,7 @@ ai_analysis:
   #   - 推送 incremental（避免重复），AI 分析 current（看当前榜单变化）
   #   - 推送 current（实时热点），AI 分析 daily（全天总结）
   #
-  mode: "follow_report"
+  mode: "daily"
 
   # 分析内容配置
   max_news_for_analysis: 150        # 热榜+RSS 合计参与分析的新闻数量上限（控制成本关键项）
